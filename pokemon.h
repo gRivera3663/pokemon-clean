@@ -20,12 +20,20 @@ struct PokeEntry
 	char type[10];
 	char description;
 	PokeEntry() {};
-	PokeEntry(int n) {};
+	PokeEntry(int n)
+   	 {
+		std::ifstream entryFile(std::to_string(n) + ".txt");
+		entryFile >> number;
+		entryFile >> name;
+		entryFile >> type;
+		entryFile.seekg(1, std::ios::cur);
+		entryFile.getline(description, 199);
+		entryFile.close();
+	}
 };
 
 class Pokemon {
 private:
-	PokeEntry userEntry;
 	int id;
 	std::string name;
 	int level = 1;
@@ -40,7 +48,13 @@ protected:
 	std::list<element> weaknesses;
 
 public:
+	PokeEntry *userEntry;
+
 	Pokemon(int i) {}
+	Pokemon(int i)
+	{
+		userEntry = new PokeEntry(i);
+	}
 	~Pokemon() {}
 	std::string get_name() {
 		return name;
