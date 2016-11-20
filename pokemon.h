@@ -87,7 +87,61 @@ public:
 class Water: public Pokemon {
 public:
 	Water(int index);
+
+	virtual int attack1(Pokemon *pokemon)
+   	{
+        	list<element> temp = {element::water};
+        	cout << this->get_name() << " used Bubble. " << pokemon->get_name() << " took " << take_damage(2, temp) << " damage.";
+        	return int();
+    	}
 };
+
+// Specific Water Pokemon
+
+class Squirtle: public Water
+{
+	Squirtle(string nickname = "Squirtle");
+
+	virtual int attack2(Pokemon *pokemon)
+    	{
+        	list<element> temp = {element::normal};
+        	cout << this->get_name() << " used Tackle. " << pokemon->get_name() << " took " << take_damage(2, temp) << " damage.";
+        	return int();
+    	}
+};
+
+class Wartortle: public Water
+{
+	Wartortle(string nickname = "Wartortle");
+
+	virtual int attack2(Pokemon *pokemon)
+    	{
+        	list<element> temp = {element::water};
+        	cout << this->get_name() << " used Surf. " << pokemon->get_name() << " took " << take_damage(3, temp) << " damage.";
+        	return int();
+    	}
+};
+
+class Blastoise: public Water
+{
+	Blastoise(string nickname = "Blastoise");
+
+	virtual int attack1(Pokemon *pokemon)
+    	{
+        	list<element> temp = {element::water, element::dragon};
+        	cout << this->get_name() << " used Water Pledge. " << pokemon->get_name() << " took " << take_damage(8, temp) << " damage.";
+        	return int();
+    	}
+    
+    	virtual int attack2(Pokemon *pokemon)
+    	{
+        	list<element> temp = {element::water};
+        	cout << this->get_name() << "used Hydro Cannon. " << pokemon->get_name() << " took " << take_damage(6, temp) << " damage.";
+        	return int();
+    	}
+};
+
+//-----------------------
 
 class Grass: public Pokemon {
 public:

@@ -69,5 +69,19 @@ Pokemon *make_pokemon(element e, std::string n) {
 		case 9: newPokemon = new Blastoise;
 	}
 	return newPokemon;
+}
 
+Squirtle::Squirtle(std::string nickname): Water(7)
+{
+	Pokemon.name = nickname;
+}
+
+Wartortle::Wartortle(std::string nickname): Water(8)
+{
+	Pokemon.name = nickname;
+}
+
+Blastoise::Blastoise(std::string nickname): Water(9)
+{
+	Pokemon.name = nickname;
 }
